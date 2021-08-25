@@ -32,7 +32,7 @@ spec:
         if [ $e -gt $overall_exit ]; then
           overall_exit=$e
         fi
-      }
+      }if config/argocd exists
 
       if [[ -d "${argo_path}" ]]; then
         printf "Apply $(basename ${argo_path}) applications\n"

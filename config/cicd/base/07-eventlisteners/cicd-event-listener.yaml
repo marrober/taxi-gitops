@@ -6,40 +6,62 @@ metadata:
   namespace: cicd
 spec:
   namespaceSelector: {}
-  podTemplate: {}
   resources: {}
   serviceAccountName: pipeline
   triggers:
   - bindings:
-    - ref: github-push-binding
+    - kind: TriggerBinding
+      ref: github-push-binding
     interceptors:
-    - github:
-        secretRef:
+    - params:
+      - name: secretRef
+        value:
           secretKey: webhook-secret-key
           secretName: gitops-webhook-secret
-    - cel:
-        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name
-          == 'marrober/taxi-gitops')
-        overlays:
+      - name: eventTypes
+        value: null
+      ref:
+        kind: ClusterInterceptor
+        name: github
+    - params:
+      - name: filter
+        value: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'marrober/taxi-gitops')
+      - name: overlays
+        value:
         - expression: body.ref.split('/')[2]
           key: ref
+      ref:
+        kind: ClusterInterceptor
+        name: cel
     name: ci-dryrun-from-push
     template:
       ref: ci-dryrun-from-push-template
   - bindings:
-    - ref: dev-app-taxi-taxi-binding
-    - ref: github-push-binding
+    - kind: TriggerBinding
+      ref: dev-app-taxi-taxi-binding
+    - kind: TriggerBinding
+      ref: github-push-binding
     interceptors:
-    - github:
-        secretRef:
+    - params:
+      - name: secretRef
+        value:
           secretKey: webhook-secret-key
           secretName: webhook-secret-dev-taxi
-    - cel:
-        filter: (header.match('X-GitHub-Event', 'push') && body.repository.full_name
-          == 'marrober/taxi')
-        overlays:
+      - name: eventTypes
+        value: null
+      ref:
+        kind: ClusterInterceptor
+        name: github
+    - params:
+      - name: filter
+        value: (header.match('X-GitHub-Event', 'push') && body.repository.full_name == 'marrober/taxi')
+      - name: overlays
+        value:
         - expression: body.ref.split('/')[2]
           key: ref
+      ref:
+        kind: ClusterInterceptor
+        name: cel
     name: app-ci-build-from-push-taxi
     template:
       ref: app-ci-template
