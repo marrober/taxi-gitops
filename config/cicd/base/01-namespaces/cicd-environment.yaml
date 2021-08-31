@@ -5,5 +5,3 @@ metadata:
     app.openshift.io/vcs-uri: https://github.com/marrober/taxi-gitops.git?ref=HEAD
   creationTimestamp: null
   name: cicd
-spec: {}
-status: {}
