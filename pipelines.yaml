@@ -4,7 +4,8 @@ config:
   pipelines:
     name: cicd
 environments:
-- apps:
+- name: dev
+  apps:
   - name: app-taxi
     services:
     - name: taxi
@@ -18,7 +19,6 @@ environments:
         secret:
           name: webhook-secret-dev-taxi
           namespace: cicd
-  name: dev
   pipelines:
     integration:
       bindings:
