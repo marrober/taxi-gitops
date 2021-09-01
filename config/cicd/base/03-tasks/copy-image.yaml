@@ -41,22 +41,10 @@ spec:
         echo $DEST_REGCRED >> $(workspaces.source.path)/regcred.json
     - name: view-creds-file
       image: registry.redhat.io/rhel8/skopeo@sha256:7297e3b42ef1d56a5bc1d64a979d05c157bf31b476cc526386c873a89459610a
-      env:
-        - name: DEST_REGCRED
-          valueFrom:
-            secretKeyRef:
-              key: .dockerconfigjson
-              name: $(params.dest-regcred)
       script: >
         cat $(workspaces.source.path)/regcred.json
     - name: skopeo-copy-with-creds
       image: registry.redhat.io/rhel8/skopeo@sha256:7297e3b42ef1d56a5bc1d64a979d05c157bf31b476cc526386c873a89459610a
-      env:
-        - name: DEST_REGCRED
-          valueFrom:
-            secretKeyRef:
-              key: .dockerconfigjson
-              name: $(params.dest-regcred)
       script: >
         # Function to copy multiple images.
 
