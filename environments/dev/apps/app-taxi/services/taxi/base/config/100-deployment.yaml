@@ -24,7 +24,7 @@ spec:
         imagePullPolicy: Always
         name: taxi
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources: {}
       serviceAccountName: default
 status: {}
