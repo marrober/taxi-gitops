@@ -37,12 +37,20 @@ spec:
             secretKeyRef:
               key: .dockerconfigjson
               name: $(params.destRegcred)
-      script: >
-        echo $DEST_REGCRED >> $(workspaces.source.path)/regcred.json
+      command:
+        - /bin/sh
+        - '-c'
+      args:
+        - |-
+          echo $DEST_REGCRED >> $(workspaces.source.path)/regcred.json
     - name: view-creds-file
       image: registry.redhat.io/rhel8/skopeo@sha256:7297e3b42ef1d56a5bc1d64a979d05c157bf31b476cc526386c873a89459610a
-      script: >
-        cat $(workspaces.source.path)/regcred.json
+      command:
+        - /bin/sh
+        - '-c'
+      args:
+        - |-
+          cat $(workspaces.source.path)/regcred.json
     - name: skopeo-copy-with-creds
       image: registry.redhat.io/rhel8/skopeo@sha256:7297e3b42ef1d56a5bc1d64a979d05c157bf31b476cc526386c873a89459610a
       script: >
@@ -73,16 +81,13 @@ spec:
         # params in the taskrun.
 
         if [ "$(params.srcImageURL)" != "" ] && [ "$(params.destImageURL)" != ""] ; then
-
-          skopeo copy "docker://$(params.srcImageURL)" "docker://$(params.destImageURL)" --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) --dest-authfile=$(workspaces.source.path)/regcred.json
-
+          skopeo copy "docker://$(params.srcImageURL)" "docker://$(params.destImageURL)" \
+          --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) \
+          --dest-authfile=$(workspaces.source.path)/regcred.json
         else
-
           # If file is provided as a configmap in the workspace then multiple images can be copied.
           #
-
           copyimages
-
         fi
   workspaces:
     - name: source
