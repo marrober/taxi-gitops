@@ -44,6 +44,8 @@ spec:
         value: $(tt.params.build_extra_args)
       - name: IMAGE
         value: $(tt.params.imageRepo):$(tt.params.io.openshift.build.commit.ref)-$(tt.params.io.openshift.build.commit.id)
+      - name: IMAGE_REPO
+        value: $(tt.params.imageRepo)
       - name: COMMIT_SHA
         value: $(tt.params.io.openshift.build.commit.id)
       - name: GIT_REF

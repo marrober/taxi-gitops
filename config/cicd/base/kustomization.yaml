@@ -6,6 +6,7 @@ resources:
 - 02-rolebindings/pipeline-service-rolebinding.yaml
 - 03-tasks/deploy-from-source-task.yaml
 - 03-tasks/set-commit-status-task.yaml
+- 03-tasks/copy-image.yaml
 - 04-pipelines/app-ci-pipeline.yaml
 - 04-pipelines/ci-dryrun-from-push-pipeline.yaml
 - 05-bindings/dev-app-taxi-taxi-binding.yaml
