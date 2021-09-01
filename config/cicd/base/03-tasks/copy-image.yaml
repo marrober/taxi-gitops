@@ -24,6 +24,9 @@ spec:
       description: Verify the TLS on the dest registry endpoint
       name: destTLSverify
       type: string
+    - name: destRegcred
+      type: string
+      description: Secret holding the json credentials for the destination.
 
   steps:
     - name: create-creds-file
@@ -33,7 +36,7 @@ spec:
           valueFrom:
             secretKeyRef:
               key: .dockerconfigjson
-              name: $(params.dest-regcred)
+              name: $(params.destRegcred)
       script: >
         echo $DEST_REGCRED >> $(workspaces.source.path)/regcred.json
     - name: view-creds-file

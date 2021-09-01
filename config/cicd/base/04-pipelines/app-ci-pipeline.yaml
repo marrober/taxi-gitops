@@ -44,6 +44,8 @@ spec:
     type: string
   - name: GIT_REPO
     type: string
+  - name: destRegcred
+    type: string
   tasks:
   - name: set-pending-status
     params:
@@ -102,6 +104,8 @@ spec:
       value: $(params.IMAGE)
     - name: destImageURL
       value: "$(params.IMAGE_REPO):latest"
+    - name: destRegcred
+      value: $(params.destRegcred)
     runAfter:
     - build-image
     taskRef:
