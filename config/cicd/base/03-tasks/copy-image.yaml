@@ -73,12 +73,18 @@ spec:
         # params in the taskrun.
 
         if [ "$(params.srcImageURL)" != "" ] && [ "$(params.destImageURL)" != ""
+
         ] ; then
+
           skopeo copy "docker://$(params.srcImageURL)" "docker://$(params.destImageURL)" --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) --dest-authfile=$(workspaces.source.path)/regcred.json
+
         else
+
           # If file is provided as a configmap in the workspace then multiple images can be copied.
           #
+
           copyimages
+
         fi
   workspaces:
     - name: source
