@@ -72,9 +72,7 @@ spec:
 
         # params in the taskrun.
 
-        if [ "$(params.srcImageURL)" != "" ] && [ "$(params.destImageURL)" != ""
-
-        ] ; then
+        if [ "$(params.srcImageURL)" != "" ] && [ "$(params.destImageURL)" != ""] ; then
 
           skopeo copy "docker://$(params.srcImageURL)" "docker://$(params.destImageURL)" --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) --dest-authfile=$(workspaces.source.path)/regcred.json
 
