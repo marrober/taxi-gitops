@@ -61,7 +61,8 @@ spec:
               cmd="$cmd \
                   $url"
             done
-            skopeo copy $cmd --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) --dest-authfile=$(workspaces.source.path)/regcred.json
+            skopeo copy $cmd --src-tls-verify=$(params.srcTLSverify) --dest-tls-verify=$(params.destTLSverify) 
+            ## --dest-authfile=$(workspaces.source.path)/regcred.json
             echo $cmd
           done < "$filename"
         }
