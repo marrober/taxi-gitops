@@ -112,7 +112,7 @@ spec:
       kind: ClusterTask
       name: skopeo-copy
     workspaces:
-    - name: image-url
+    - name: images-url
       workspace: shared-data      
   workspaces:
   - description: This workspace will receive the cloned git repo.
