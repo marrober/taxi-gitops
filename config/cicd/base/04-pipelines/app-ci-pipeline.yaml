@@ -101,9 +101,9 @@ spec:
     - name: destTLSverify
       value: $(params.TLSVERIFY)
     - name: srcImageURL
-      value: $(params.IMAGE)
+      value: "docker://$(params.IMAGE)"
     - name: destImageURL
-      value: "$(params.IMAGE_REPO):latest"
+      value: "docker://$(params.IMAGE_REPO):latest"
 #    - name: destRegcred
 #      value: $(params.destRegcred)
     runAfter:
