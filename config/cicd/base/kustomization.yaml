@@ -18,3 +18,4 @@ resources:
 - 07-eventlisteners/cicd-event-listener.yaml
 - 07-eventlisteners/cd-quay-event-listener.yaml
 - 08-routes/gitops-webhook-event-listener.yaml
+- 08-routes/quay-webhook-event-listener.yaml
