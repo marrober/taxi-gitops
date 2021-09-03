@@ -101,7 +101,7 @@ spec:
     - name: srcImageURL
       value: "docker://$(params.IMAGE)"
     - name: destImageURL
-      value: "docker://image-registry.openshift-image-registry.svc:5000/dev/taxi-app:latest"
+      value: "docker://image-registry.openshift-image-registry.svc:5000/dev/taxi-app:$(params.COMMIT_SHA)"
     runAfter:
     - build-image
     taskRef:
