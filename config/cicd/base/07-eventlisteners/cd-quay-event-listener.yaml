@@ -1,0 +1,14 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: EventListener
+metadata:
+  creationTimestamp: null
+  name: cd-quay-event-listener
+  namespace: cicd
+spec:
+  namespaceSelector: {}
+  resources: {}
+  serviceAccountName: pipeline
+  triggers:
+  - name: app-cd-deploy-from-image-push-taxi
+    template:
+      ref: app-cd-template

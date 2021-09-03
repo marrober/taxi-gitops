@@ -7,12 +7,14 @@ resources:
 - 03-tasks/deploy-from-source-task.yaml
 - 03-tasks/set-commit-status-task.yaml
 - 04-pipelines/app-ci-pipeline.yaml
+- 04-pipelines/app-cd-pipeline.yaml
 - 04-pipelines/ci-dryrun-from-push-pipeline.yaml
 - 05-bindings/dev-app-taxi-taxi-binding.yaml
 - 05-bindings/github-push-binding.yaml
+- 05-bindings/quay-push-binding.yaml
 - 06-templates/app-ci-build-from-push-template.yaml
 - 06-templates/ci-dryrun-from-push-template.yaml
+- 06-templates/app-cd-deploy-from-new-image-template.yaml
 - 07-eventlisteners/cicd-event-listener.yaml
+- 07-eventlisteners/cd-quay-event-listener.yaml
 - 08-routes/gitops-webhook-event-listener.yaml
-- 09-imagestream/taxi.yaml
-

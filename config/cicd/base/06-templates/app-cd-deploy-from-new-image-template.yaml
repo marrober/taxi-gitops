@@ -1,0 +1,18 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  creationTimestamp: null
+  name: app-cd-template
+  namespace: cicd
+spec:
+  params:
+  resourcetemplates:
+  - apiVersion: tekton.dev/v1beta1
+    kind: PipelineRun
+    metadata:
+      creationTimestamp: null
+      name: app-cd-$(uid)
+    spec:
+      pipelineRef:
+        name: app-cd-pipeline
+      serviceAccountName: pipeline

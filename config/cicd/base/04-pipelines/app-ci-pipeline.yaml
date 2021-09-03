@@ -92,24 +92,24 @@ spec:
     workspaces:
     - name: source
       workspace: shared-data
-  - name: update-image-stream
-    params:
-    - name: srcTLSverify
-      value: $(params.TLSVERIFY)
-    - name: destTLSverify
-      value: $(params.TLSVERIFY)
-    - name: srcImageURL
-      value: "docker://$(params.IMAGE)"
-    - name: destImageURL
-      value: "docker://image-registry.openshift-image-registry.svc:5000/dev/taxi-app:$(params.COMMIT_SHA)"
-    runAfter:
-    - build-image
-    taskRef:
-      kind: ClusterTask
-      name: skopeo-copy
-    workspaces:
-    - name: images-url
-      workspace: shared-data   
+#  - name: update-image-stream
+#    params:
+#    - name: srcTLSverify
+#      value: $(params.TLSVERIFY)
+#    - name: destTLSverify
+#      value: $(params.TLSVERIFY)
+#    - name: srcImageURL
+#      value: "docker://$(params.IMAGE)"
+#    - name: destImageURL
+#      value: "docker://image-registry.openshift-image-registry.svc:5000/dev/taxi-app:latest"
+#    runAfter:
+#    - build-image
+#    taskRef:
+#      kind: ClusterTask
+#      name: skopeo-copy
+#    workspaces:
+#    - name: images-url
+#      workspace: shared-data   
 #  - name: update-image-repository
 #    params:
 #    - name: srcTLSverify
