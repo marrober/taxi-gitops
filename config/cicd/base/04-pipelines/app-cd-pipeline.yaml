@@ -9,7 +9,7 @@ spec:
   - name: deploy-image
     params:
     - name: SCRIPT
-      value: "oc patch deployment/taxi -n dev --patch \"{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"last-restart\":\"`date +'%s'`\"}}}}}\""
+      value: "oc patch deployment/taxi --patch \"{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"last-restart\":\"$(date +'%s')\"}}}}}\""
     taskRef:
       kind: ClusterTask
       name: openshift-client
