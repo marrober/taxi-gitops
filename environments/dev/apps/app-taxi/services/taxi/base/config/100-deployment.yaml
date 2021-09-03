@@ -4,6 +4,9 @@ metadata:
   labels:
     app.kubernetes.io/name: taxi
     app.kubernetes.io/part-of: app-taxi
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"taxi-app:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"taxi\")].image"}]    
   name: taxi
   namespace: dev
 spec:
