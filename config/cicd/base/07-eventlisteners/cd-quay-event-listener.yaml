@@ -12,3 +12,6 @@ spec:
   - name: app-cd-deploy-from-image-push-taxi
     template:
       ref: app-cd-template
+    bindings:
+    - kind: TriggerBinding
+      ref: quay-push-binding

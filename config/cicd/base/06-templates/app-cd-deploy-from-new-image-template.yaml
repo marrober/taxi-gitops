@@ -6,6 +6,10 @@ metadata:
   namespace: cicd
 spec:
   params:
+  - name: quayrepositoryname
+  - name: quayrepositoryidentifier
+  - name: quayurl
+  - name: tag
   resourcetemplates:
   - apiVersion: tekton.dev/v1beta1
     kind: PipelineRun
@@ -13,6 +17,15 @@ spec:
       creationTimestamp: null
       name: app-cd-$(uid)
     spec:
+      params:
+      - name: quayreponame
+        value: $(tt.params.quayrepositoryname)
+      - name: quayrepoid
+        value: $(tt/params.quayrepositoryidentifier)
+      - name: quayrepourl
+        value: $(tt.params.quayurl)
+      - name: quayimagetag
+        value: $(tt.params.tag)
       pipelineRef:
         name: app-cd-pipeline
       serviceAccountName: pipeline

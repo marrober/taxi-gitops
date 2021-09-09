@@ -5,11 +5,20 @@ metadata:
   name: app-cd-pipeline
   namespace: cicd
 spec:
+  params: 
+  - name: quayreponame
+    type: string
+  - name: quayrepoid
+    type: string
+  - name: quayrepourl
+    type: string
+  - name: quayimagetag
+    type: string
   tasks:
   - name: deploy-image
     params:
     - name: SCRIPT
-      value: "oc patch deployment/taxi -n dev --patch \"{\"spec\":{\"template\":{\"metadata\":{\"annotations\":{\"last-restart\":\"$(date +'%s')\"}}}}}\""
+      value: "oc patch deployment/taxi -n dev --patch \"{\\\"spec\\\":{\\\"template\\\":{\\\"metadata\\\":{\\\"annotations\\\":{\\\"last-restart\\\":\\\"$(date +'%s')\\\"}}}}}\""
     taskRef:
       kind: ClusterTask
       name: openshift-client
