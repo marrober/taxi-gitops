@@ -110,24 +110,24 @@ spec:
 #    workspaces:
 #    - name: images-url
 #      workspace: shared-data   
-#  - name: update-image-repository
-#    params:
-#    - name: srcTLSverify
-#      value: $(params.TLSVERIFY)
-#    - name: destTLSverify
-#      value: $(params.TLSVERIFY)
-#    - name: srcImageURL
-#      value: "docker://$(params.IMAGE)"
-#    - name: destImageURL
-#      value: "docker://$(params.IMAGE_REPO):latest"
-#    runAfter:
-#    - build-image
-#    taskRef:
-#      kind: ClusterTask
-#      name: skopeo-copy
-#    workspaces:
-#    - name: images-url
-#      workspace: shared-data      
+  - name: update-image-repository
+    params:
+    - name: srcTLSverify
+      value: $(params.TLSVERIFY)
+    - name: destTLSverify
+      value: $(params.TLSVERIFY)
+    - name: srcImageURL
+      value: "docker://$(params.IMAGE)"
+    - name: destImageURL
+      value: "docker://$(params.IMAGE_REPO):latest"
+    runAfter:
+    - build-image
+    taskRef:
+      kind: ClusterTask
+      name: skopeo-copy
+    workspaces:
+    - name: images-url
+      workspace: shared-data      
   workspaces:
   - description: This workspace will receive the cloned git repo.
     name: shared-data
