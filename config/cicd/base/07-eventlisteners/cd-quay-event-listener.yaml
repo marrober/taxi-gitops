@@ -18,7 +18,7 @@ spec:
     interceptors:
     - params:
       - name: filter
-        value: $(body.updated_tags in ['latest'])
+        value: $(body.repository in ['marrober/taxi'])
       ref:
         kind: ClusterInterceptor
         name: cel

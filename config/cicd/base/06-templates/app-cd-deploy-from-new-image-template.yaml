@@ -21,7 +21,7 @@ spec:
       - name: quayreponame
         value: $(tt.params.quayrepositoryname)
       - name: quayrepoid
-        value: $(tt/params.quayrepositoryidentifier)
+        value: $(tt.params.quayrepositoryidentifier)
       - name: quayrepourl
         value: $(tt.params.quayurl)
       - name: quayimagetag
