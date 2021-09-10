@@ -110,7 +110,7 @@ spec:
 #    workspaces:
 #    - name: images-url
 #      workspace: shared-data   
-  - name: update-image-repository
+  - name: update-latest-tag-image-repository
     params:
     - name: srcTLSverify
       value: $(params.TLSVERIFY)
