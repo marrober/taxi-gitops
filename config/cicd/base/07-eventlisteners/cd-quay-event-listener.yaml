@@ -15,3 +15,10 @@ spec:
     bindings:
     - kind: TriggerBinding
       ref: quay-push-binding
+    interceptors:
+    - params:
+      - name: filter
+        value: (body.quayimagetag == 'latest')
+      ref:
+        kind: ClusterInterceptor
+        name: cel
