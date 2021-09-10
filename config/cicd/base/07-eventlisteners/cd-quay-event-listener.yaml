@@ -18,7 +18,7 @@ spec:
     interceptors:
     - params:
       - name: filter
-        value: $(body.repository in ['marrober/taxi'])
+        value: $(body.repository == 'marrober/taxi')
       ref:
         kind: ClusterInterceptor
         name: cel
