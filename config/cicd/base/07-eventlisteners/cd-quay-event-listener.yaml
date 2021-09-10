@@ -18,7 +18,7 @@ spec:
     interceptors:
     - params:
       - name: filter
-        value: (body.quayimagetag == 'latest')
+        value: $(body.updated_tags in ['latest'])
       ref:
         kind: ClusterInterceptor
         name: cel
